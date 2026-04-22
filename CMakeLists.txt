@@ -10,4 +10,8 @@ add_executable(Proyecto1 main.cpp
         Incidencia.h
         Severidad.h
         Laboratorio.cpp
-        Laboratorio.h)
+        Laboratorio.h
+        PCBasica.cpp
+        PCBasica.h
+        Sevidor.cpp
+        Sevidor.h)
