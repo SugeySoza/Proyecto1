@@ -6,24 +6,32 @@ using namespace std;
 #define PROYECTO1_EQUIPO_H
 
 class Incidencia;
+class EstrategiaMantenimiento;
 
 class Equipo {
-private:
+protected:
     string id;
     int criticidad;
     int estado;
     int inactividad;
     Incidencia* incidencias[50];
     int cantidadIncidencias;
+    EstrategiaMantenimiento* estrategia;
+    double desgaste;
 
 
 public:
     Equipo();
-    Equipo(string,int ,int ,int ,int );
+    Equipo(string,int ,int ,int ,int,double );
+
+
     void agregarIncidencia(Incidencia* inc);
     void RecibirMantenimiento();
-    void calcularPrioridad();
-    void depreciar();
+    double calcularPrioridad();
+    void setEstrategia(EstrategiaMantenimiento* e);
+    virtual void depreciarporDia(int diaActual)=0;
+    virtual string getId()=0;
+
 
 
 };
