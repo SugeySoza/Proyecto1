@@ -14,4 +14,6 @@ add_executable(Proyecto1 main.cpp
         PCBasica.cpp
         PCBasica.h
         Sevidor.cpp
-        Sevidor.h)
+        Sevidor.h
+        EstrategiaMantenimiento.cpp
+        EstrategiaMantenimiento.h)

@@ -9,7 +9,7 @@ class Incidencia;
 class EstrategiaMantenimiento;
 
 class Equipo {
-private:
+protected:
     string id;
     int criticidad;
     int estado;
