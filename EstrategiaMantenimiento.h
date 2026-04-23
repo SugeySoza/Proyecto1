@@ -3,7 +3,7 @@ using namespace std;
 #ifndef PROYECTO1_ESTRATEGIAMANTENIMIENTO_H
 #define PROYECTO1_ESTRATEGIAMANTENIMIENTO_H
 
-
+class Equipo;
 class EstrategiaMantenimiento {
 
    //Clase funciona como interfaz para implementar el didiseño Strategy

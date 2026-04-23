@@ -1,5 +1,6 @@
 
 #include "MantenimientoCorrectivo.h"
+#include"Equipo.h"
 #include<iostream>
 using namespace std;
 
