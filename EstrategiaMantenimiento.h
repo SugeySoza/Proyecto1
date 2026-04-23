@@ -1,5 +1,4 @@
 #include<iostream>
-#include"Equipo.h"
 using namespace std;
 #ifndef PROYECTO1_ESTRATEGIAMANTENIMIENTO_H
 #define PROYECTO1_ESTRATEGIAMANTENIMIENTO_H

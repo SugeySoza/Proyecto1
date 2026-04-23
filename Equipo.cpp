@@ -86,4 +86,31 @@ void Equipo:: setEstrategia(EstrategiaMantenimiento* e) {
 
 }
 
+//La depreciacion o desgaste es la sumatoria del desgaste diario, la criticidad, la cantidad de incidencias y la inactividad
+void Equipo::depreciarporDia(int diaActual) {
+    cout<<"Dia:"<< diaActual <<" depreciando equipo "<<id<<endl;
+
+    //Desgaste diario
+    double desgasteDiario=0.5;
+    //Desgaste por criticidad
+    desgasteDiario+=criticidad*0.02;
+    //Desgaste por incidencias
+    desgasteDiario+=cantidadIncidencias *0.3;
+    //Desgaste por inactividad
+    desgasteDiario+=inactividad * 0.2;
+    // Sumamos el desgaste acumulado
+    desgaste+=desgasteDiario;
+
+    //Desgaste total del equipo(equipo obsoleto)
+
+    if (desgaste>=100) {
+        estado=0;
+        cout<<"El equipo "<<id<<"ha fallado por desgaste"<<endl;
+
+    }
+}
+
+    string Equipo:: getId() {
+        return id;
+    }
 
