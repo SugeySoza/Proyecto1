@@ -18,7 +18,7 @@ add_executable(Proyecto1 main.cpp
         Simulador.cpp
         Simulador.h
         PCBasica.cpp
-        Sevidor.h
-        Sevidor.cpp
+        Servidor.h
+        Servidor.cpp
         Algoritmos.cpp
         Algoritmos.h)

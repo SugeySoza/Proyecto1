@@ -4,8 +4,16 @@
 
 #include "PCBasica.h"
 
+PCBasica::PCBasica() {
+}
+
+PCBasica::PCBasica(string id, int criticidad, int estado, int inactividad, double desgaste):Equipo(id,criticidad,estado,inactividad,desgaste) {//Constructor para crear un objeto de esta clase
+}
+
 void PCBasica::depreciarporDia(int diaActual) {
     cout<<"Dia:"<< diaActual <<" depreciando equipo "<<id<<endl;
+
+    inactividad++; //cada dia que pasa aumenta la inactividad
 
     //Desgaste diario
     double desgasteDiario=0.5;
@@ -22,9 +30,9 @@ void PCBasica::depreciarporDia(int diaActual) {
 
     if (desgaste>=100) {
         estado=0;
-        cout<<"El equipo "<<id<<"ha fallado por desgaste"<<endl;
+        cout<<"El equipo "<< id <<"ha fallado por desgaste"<<endl;
 
     }
 }
 
-std::string PCBasica::getId() { return id; }
+string PCBasica::getId() { return id; }

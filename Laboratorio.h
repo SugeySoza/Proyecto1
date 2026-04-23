@@ -6,12 +6,13 @@
 
 #include <string>
 #include "Equipo.h"
+#include "Algoritmos.h"
 
 class Laboratorio {
 
 private:
     Equipo* equipos[100];
-    std::string idsOrdenados[100];
+    string idsOrdenados[100];
     int cantidad;
     Incidencia* incidencias[300];
     int cantidadIncidencias;
@@ -25,7 +26,7 @@ public:
 
     // Métodos principales
     void registrarEquipo(Equipo* equipo);
-    Equipo* buscarEquipoPorId(std::string id);
+    Equipo* buscarEquipoPorId(string id);
     void registrarMantenimientoRealizado(Equipo* eq);
     double riesgoGlobalPromedio();
     void atenderTop3(EstrategiaMantenimiento* estrategia);

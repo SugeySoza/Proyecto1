@@ -89,7 +89,7 @@ Equipo* Laboratorio::getEquipo(int i) {
 
 void Laboratorio:: atenderTop3(EstrategiaMantenimiento* estrategia) {
 
-    int n = cantidad;
+    /*int n = cantidad;
 
     Equipo* lista[100];
     double prioridades[100];
@@ -133,6 +133,31 @@ void Laboratorio:: atenderTop3(EstrategiaMantenimiento* estrategia) {
             registrarMantenimientoRealizado(lista[i]);
         }
     }
+    */
+    Equipo* lista[100];
+
+    // Copiar equipos a una lista auxiliar
+    for (int i = 0; i < cantidad; i++) {
+        lista[i] = equipos[i];
+        if (lista[i] != nullptr) {
+            lista[i]->calcularPrioridad();
+        }
+    }
+    // Ordenar usando QuickSort propio
+    Algoritmos::ordenarEquiposPorPrioridadDesc(lista, cantidad);
+    // Atender solo los 3 más prioritarios
+    int limite = 3;
+
+    if (cantidad < 3) {
+        limite = cantidad;
+    }
+
+    for (int i = 0; i < limite; i++) {
+        if (lista[i] != nullptr) {
+            estrategia->aplicar(lista[i]);
+            registrarMantenimientoRealizado(lista[i]);
+        }
+    }
 }
 
 void Laboratorio::agregarIncidencia(Incidencia *inc) {
@@ -154,11 +179,11 @@ void Laboratorio::actualizarMetricas() {
 
         if (eq != nullptr) {
 
-            if (eq->getEstado() < 0.3)
-                criticos++;
-
-            if (eq->getEstado() > 0)
+            if (eq->getEstado() == 0)
                 activos++;
+
+            if (eq->getEstado() == 2)
+                criticos++;
         }
     }
 

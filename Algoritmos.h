@@ -15,9 +15,9 @@ using namespace std;
 class Algoritmos
 {
 public:
-    static void quicksortEquipo (Equipo** equipos, int lo, int high ); // equipos apuntaria a un vector de puntesros
-    static void ordenarEquiposPorPrioridadDesc(Equipo** equipo); // Equipo apuntaria a un vector de punteros
-    static int busquedaBinariaId(string** id, string idBuscado); // id apunta a un vector de punteros
+    static void quicksortEquipo (Equipo** equipos, int lo, int high); // equipos apuntaria a un vector de puntesros
+    static void ordenarEquiposPorPrioridadDesc(Equipo** equipos,int cantidad); // Equipo apuntaria a un vector de punteros
+    static int busquedaBinariaId(string ids[],int cantidad, string idBuscado); // id apunta a un vector de punteros
 };
 
 

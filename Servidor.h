@@ -7,8 +7,10 @@
 
 #include "Equipo.h"
 
-class Sevidor : public Equipo {
+class Servidor : public Equipo {
 public:
+    Servidor();
+    Servidor(string id, int criticidad, int estado, int inactividad, double desgaste);
     void depreciarporDia(int diaActual) override;
     std::string getId();
     void optimizarRecursos();

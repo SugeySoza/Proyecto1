@@ -9,6 +9,8 @@
 
 class PCBasica : public Equipo {
     public:
+    PCBasica();
+    PCBasica(string id, int criticidad, int estado, int inactividad, double desgaste);
     void depreciarporDia(int diaActual) override;
     std::string getId () override;
 };

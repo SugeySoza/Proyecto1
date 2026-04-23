@@ -18,13 +18,9 @@ protected:
     int cantidadIncidencias;
     EstrategiaMantenimiento* estrategia;
     double desgaste;
-
-
 public:
     Equipo();
-    Equipo(string,int ,int ,int ,int,double );
-
-
+        Equipo(string,int ,int ,int,double);
     void agregarIncidencia(Incidencia* inc);
     void RecibirMantenimiento();
     double calcularPrioridad();
@@ -32,11 +28,12 @@ public:
     virtual void depreciarporDia(int diaActual)=0;
     virtual string getId()=0;
     int getEstado();
-    virtual~Equipo(){}
-
-
-
-
+    double getDesgaste();
+    void setDesgaste(double d);
+    void bajarDesgaste(double cantidad);
+    void setEstado(int e);
+    void setInactividad(int i);
+    virtual~Equipo();
 };
 
 

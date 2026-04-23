@@ -1,16 +1,43 @@
 #include <iostream>
+#include "Laboratorio.h"
+#include "Simulador.h"
+#include "PCBasica.h"
+#include "Servidor.h"
+#include <cstdlib>
+#include <ctime>
 
-// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+using namespace std;
+
 int main() {
-    // TIP Press <shortcut actionId="RenameElement"/> when your caret is at the <b>lang</b> variable name to see how CLion can help you rename it.
-    auto lang = "C++";
-    std::cout << "Hello and welcome to " << lang << "!\n";
+    srand(time(0));
 
-    for (int i = 1; i <= 5; i++) {
-        // TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        std::cout << "i = " << i << std::endl;
-    }
+    // 1. Crear laboratorio
+    Laboratorio* lab = new Laboratorio();
+
+    // 2. Crear equipos
+    Equipo* e1 = new PCBasica("PC1", 8, 0, 2, 10.0);
+    Equipo* e2 = new PCBasica("PC2", 5, 0, 1, 5.0);
+    Equipo* e3 = new Servidor("SV1", 9, 0, 3, 20.0);
+    Equipo* e4 = new Servidor("SV2", 7, 0, 2, 15.0);
+
+    // 3. Registrar equipos en laboratorio
+    lab->registrarEquipo(e1);
+    lab->registrarEquipo(e2);
+    lab->registrarEquipo(e3);
+    lab->registrarEquipo(e4);
+
+    // 4. Crear simulador
+    Simulador sim(lab);
+
+    // 5. Ejecutar simulación
+    sim.ejecutar30Dias("./");
+
+    // 6. Liberar memoria
+    delete e1;
+    delete e2;
+    delete e3;
+    delete e4;
+    delete lab;
 
     return 0;
-    // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.
 }

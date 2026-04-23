@@ -10,8 +10,9 @@ using namespace std;
 class Equipo;
 class Simulador {
 private:
-    Laboratorio laboratorio;
+    Laboratorio* laboratorio;
 public:
+    Simulador(Laboratorio* lab);
     void ejecutar30Dias(string directorioSalida);
     void  aplicarRevisionEspecial(Equipo* equipo);
 

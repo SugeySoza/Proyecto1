@@ -2,9 +2,15 @@
 // Created by gabriel on 22/4/26.
 //
 
-#include "Sevidor.h"
+#include "Servidor.h"
 
-void Sevidor::depreciarporDia( int diaActual) {
+Servidor::Servidor() {
+}
+
+Servidor::Servidor(string id, int criticidad, int estado, int inactividad, double desgaste):Equipo(id, criticidad, estado, inactividad, desgaste) {//Constructor para crear un objeto de esta clase
+}
+
+void Servidor::depreciarporDia( int diaActual) {
     cout<<"Dia:"<< diaActual <<" depreciando equipo "<<id<<endl;
 
     //Desgaste diario
@@ -22,14 +28,14 @@ void Sevidor::depreciarporDia( int diaActual) {
 
     if (desgaste>=100) {
         estado=0;
-        cout<<"El equipo "<<id<<"ha fallado por desgaste"<<endl;
+        cout<<"El equipo "<< id <<"ha fallado por desgaste"<<endl;
 
     }
 }
 
-std::string Sevidor::getId() { return "Sevidor"; }
+string Servidor::getId() { return id;}
 
-void Sevidor::optimizarRecursos(){
+void Servidor::optimizarRecursos(){
     cout << "Se ha optimizado los recursos del servidor." << endl;
 }
 //
