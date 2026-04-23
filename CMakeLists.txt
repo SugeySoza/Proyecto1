@@ -16,4 +16,7 @@ add_executable(Proyecto1 main.cpp
         MantenimientoCorrectivo.cpp
         MantenimientoCorrectivo.h
         Simulador.cpp
-        Simulador.h)
+        Simulador.h
+        PCBasica.cpp
+        Sevidor.h
+        Sevidor.cpp)

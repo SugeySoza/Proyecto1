@@ -29,7 +29,7 @@ public:
     void RecibirMantenimiento();
     double calcularPrioridad();
     void setEstrategia(EstrategiaMantenimiento* e);
-    virtual  void depreciarporDia(int diaActual)=0;
+    virtual void depreciarporDia(int diaActual)=0;
     virtual string getId()=0;
     virtual~Equipo(){}
 

@@ -4,7 +4,7 @@
 
 #include "Sevidor.h"
 
-void Sevidor::degradarPorDia( int diaActual) {
+void Sevidor::depreciarporDia( int diaActual) {
     cout<<"Dia:"<< diaActual <<" depreciando equipo "<<id<<endl;
 
     //Desgaste diario
@@ -27,9 +27,9 @@ void Sevidor::degradarPorDia( int diaActual) {
     }
 }
 
-std::string Sevidor::getTipo() { return "Sevidor"; }
+std::string Sevidor::getId() { return "Sevidor"; }
 
 void Sevidor::optimizarRecursos(){
-    // nop se que hace esta clase
+    cout << "Se ha optimizado los recursos del servidor." << endl;
 }
 //

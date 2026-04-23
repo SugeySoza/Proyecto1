@@ -4,7 +4,7 @@
 
 #include "PCBasica.h"
 
-void PCBasica::degradarPorDia(int diaActual) {
+void PCBasica::depreciarporDia(int diaActual) {
     cout<<"Dia:"<< diaActual <<" depreciando equipo "<<id<<endl;
 
     //Desgaste diario
@@ -27,4 +27,4 @@ void PCBasica::degradarPorDia(int diaActual) {
     }
 }
 
-std::string PCBasica::getTipo() { return "PC Basica"; }
+std::string PCBasica::getId() { return id; }
