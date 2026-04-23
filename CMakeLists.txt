@@ -14,4 +14,6 @@ add_executable(Proyecto1 main.cpp
         EstrategiaMantenimiento.cpp
         EstrategiaMantenimiento.h
         MantenimientoCorrectivo.cpp
-        MantenimientoCorrectivo.h)
+        MantenimientoCorrectivo.h
+        Simulador.cpp
+        Simulador.h)

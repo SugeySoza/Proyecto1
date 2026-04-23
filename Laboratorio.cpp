@@ -1,72 +1,128 @@
 
 #include "Laboratorio.h"
-#include<iostream>
+#include <iostream>
+#include"EstrategiaMantenimiento.h"
+
 using namespace std;
 
-void Laboratorio:: registrarEquipo(Equipo* equipo) {
+// Constructor
+Laboratorio::Laboratorio() {
+    cantidad = 0;
 
-    //validamos que el equipo no este nulo
-    if (equipo==nullptr) {
-        cout<<"Equipo es nulo"<<endl;
-        return;
+    for (int i = 0; i < 100; i++) {
+        equipos[i] = nullptr;
+        idsOrdenados[i] = "";
     }
-
-    //validamos que aun haya espacio para equipo nuevo
-    if (cantidad>=100) {
-        cout<<"No hay espacio para mas equipos"<<endl;
-        return;
-    }
-    //agregamos el equipo
-    equipos[cantidad]=equipo;
-    cantidad++;
-
-    cout<<"Equipo registrado correctamente"<<endl;
-
-
 }
 
-//Buscamos un Id en los equipos registrados
+// Registrar equipo
+void Laboratorio::registrarEquipo(Equipo* equipo) {
+    if (cantidad < 100 && equipo != nullptr) {
+        equipos[cantidad] = equipo;
+        idsOrdenados[cantidad] = equipo->getId();
+        cantidad++;
+    }
+}
+
+// Buscar equipo por ID
 Equipo* Laboratorio::buscarEquipoPorId(string id) {
-    for (int i=0;i<cantidad;i++) {
-        if (equipos[i]->getId()==id) {
+    for (int i = 0; i < cantidad; i++) {
+        if (equipos[i] != nullptr && equipos[i]->getId() == id) {
             return equipos[i];
-            cout<<"El Id buscado es:"<< id << " esta en la posicion:"<<i<<endl;
         }
     }
-    //si no se encuentra el Id buscado
     return nullptr;
-    cout<<"El equipo buscado con Id:"<< id << "no se encuentra registrado"<<endl;
 }
 
-//Registrar mantenimiento recibido en equipo
- void Laboratorio::registrarMantenimientoRealizado(Equipo* eq) {
-    if (eq!=nullptr) {
-        eq->RecibirMantenimiento();
-
-
-        cout<< "Mantenimiendo de equipo: " << eq->getId() <<"registrado con exito"<<endl;
-    }
-    else {
-        cout<<"Equipo nulo"<<endl;
+// Registrar mantenimiento (ejemplo básico)
+void Laboratorio::registrarMantenimientoRealizado(Equipo* eq) {
+    if (eq != nullptr) {
+        cout << "Mantenimiento registrado para equipo: "
+             << eq->getId() << endl;
     }
 }
 
- //Calcula el riesgo promedio de los equipos
-double Laboratorio:: riesgoGlobalPromedio() {
+// Calcular riesgo promedio
+double Laboratorio::riesgoGlobalPromedio() {
 
-    // hacer validacion con throw (if cantidad==0)
+    if (cantidad == 0) {
+        throw runtime_error("No hay equipos registrados");
+    }
 
-    double suma=0;
+    double suma = 0;
+    int contador = 0;
 
-    for (int i=0;i<cantidad;i++) {
-        if (equipos[i]!=nullptr) {
-       suma+= equipos[i]->calcularPrioridad();
-
+    for (int i = 0; i < cantidad; i++) {
+        if (equipos[i] != nullptr) {
+            suma += equipos[i]->calcularPrioridad();
+            contador++;
         }
     }
-     double promedio=suma/cantidad;
-    cout<< "El riesgo global promedio es: " << promedio <<endl;
 
-    return promedio;
+    if (contador == 0) return 0;
 
+    return suma / contador;
 }
+
+// Obtener cantidad de equipos
+int Laboratorio::getCantidad() {
+    return cantidad;
+}
+
+// Obtener equipo por índice
+Equipo* Laboratorio::getEquipo(int i) {
+    if (i >= 0 && i < cantidad) {
+        return equipos[i];
+    }
+    return nullptr;
+}
+// Escoge los 3 equipos que se van atender
+
+void Laboratorio:: atenderTop3(EstrategiaMantenimiento* estrategia) {
+
+    int n = cantidad;
+
+    Equipo* lista[100];
+    double prioridades[100];
+
+    // copiar datos
+    for (int i = 0; i < n; i++) {
+        lista[i] = equipos[i];
+        if (equipos[i] != nullptr) {
+            prioridades[i] = equipos[i]->calcularPrioridad();
+        }
+    }
+
+    // ordenar (burbuja)
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+
+            if (prioridades[j] < prioridades[j + 1]) {
+
+                // swap prioridades
+                double tempP = prioridades[j];
+                prioridades[j] = prioridades[j + 1];
+                prioridades[j + 1] = tempP;
+
+                // swap equipos
+                Equipo* tempE = lista[j];
+                lista[j] = lista[j + 1];
+                lista[j + 1] = tempE;
+            }
+        }
+    }
+
+    // aplicar a top 3
+    int limite = (n < 3) ? n : 3;
+
+    for (int i = 0; i < limite; i++) {
+
+        if (lista[i] != nullptr) {
+
+            estrategia->aplicar(lista[i]);
+
+            registrarMantenimientoRealizado(lista[i]);
+        }
+    }
+}
+
