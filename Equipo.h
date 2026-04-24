@@ -31,6 +31,7 @@ public:
     void setEstrategia(EstrategiaMantenimiento* e);
     virtual void depreciarporDia(int diaActual)=0;
     virtual string getId()=0;
+    int getEstado();
     virtual~Equipo(){}
 
 

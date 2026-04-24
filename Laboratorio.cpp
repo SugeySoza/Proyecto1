@@ -8,10 +8,19 @@ using namespace std;
 // Constructor
 Laboratorio::Laboratorio() {
     cantidad = 0;
+    cantidadIncidencias=0;
+    equiposActivos=0;
+    equiposCriticos=0;
+
 
     for (int i = 0; i < 100; i++) {
         equipos[i] = nullptr;
         idsOrdenados[i] = "";
+    }
+    for (int i=0;i<300;i++) {
+        incidencias[i]=nullptr;
+
+
     }
 }
 
@@ -124,5 +133,36 @@ void Laboratorio:: atenderTop3(EstrategiaMantenimiento* estrategia) {
             registrarMantenimientoRealizado(lista[i]);
         }
     }
+}
+
+void Laboratorio::agregarIncidencia(Incidencia *inc) {
+    if (inc!= nullptr&&cantidadIncidencias<300) {
+        incidencias[cantidadIncidencias]=inc;
+        cantidadIncidencias++;
+
+        cout<<"Incidencia agregada con exito"<<endl;
+    }
+}
+void Laboratorio::actualizarMetricas() {
+
+    int activos = 0;
+    int criticos = 0;
+
+    for (int i = 0; i < cantidad; i++) {
+
+        Equipo* eq = equipos[i];
+
+        if (eq != nullptr) {
+
+            if (eq->getEstado() < 0.3)
+                criticos++;
+
+            if (eq->getEstado() > 0)
+                activos++;
+        }
+    }
+
+    this->equiposActivos = activos;
+    this->equiposCriticos = criticos;
 }
 

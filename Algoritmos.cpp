@@ -77,4 +77,3 @@ int Algoritmos::busquedaBinariaId(string** id, string idBuscado)
 
     return -1; // no encontrado
 }
-

@@ -1,5 +1,6 @@
 #include<iostream>
 #include"Laboratorio.h"
+#include"Incidencia.h"
 #include<string>
 using namespace std;
 

@@ -85,5 +85,8 @@ void Equipo:: setEstrategia(EstrategiaMantenimiento* e) {
     estrategia=e;
 
 }
+int Equipo:: getEstado() {
+    return estado;
+}
 
 

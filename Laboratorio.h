@@ -1,4 +1,5 @@
 #include<iostream>
+#include"Incidencia.h"
 
 #ifndef PROYECTO1_LABORATORIO_H
 #define PROYECTO1_LABORATORIO_H
@@ -12,6 +13,11 @@ private:
     Equipo* equipos[100];
     std::string idsOrdenados[100];
     int cantidad;
+    Incidencia* incidencias[300];
+    int cantidadIncidencias;
+    int equiposActivos;
+    int equiposCriticos;
+
 
 public:
     // Constructor
@@ -23,6 +29,9 @@ public:
     void registrarMantenimientoRealizado(Equipo* eq);
     double riesgoGlobalPromedio();
     void atenderTop3(EstrategiaMantenimiento* estrategia);
+    void agregarIncidencia(Incidencia* inc);
+    void actualizarMetricas();
+
 
     // Métodos necesarios para Simulador
     int getCantidad();

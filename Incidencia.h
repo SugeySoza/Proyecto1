@@ -1,23 +1,29 @@
-#include<iostream>
-#include"Severidad.h"
-using namespace std;
+#ifndef INCIDENCIA_H
+#define INCIDENCIA_H
 
-#ifndef PROYECTO1_INCIDENCIA_H
-#define PROYECTO1_INCIDENCIA_H
+#include <string>
+#include <iostream>
+#include "Severidad.h"
 
 class Incidencia {
 private:
-    string equipoId;
+    std::string equipoId;
     Severidad severidad;
     int diaOrigen;
     bool activa;
 
 public:
-    Incidencia(string,int,bool);
-    bool estaActiva();
-    void cerrar ();
+    // Constructor
+    Incidencia(std::string eqi, Severidad s, int d, bool a);
 
+    // Métodos básicos
+    bool estaActiva();
+    void cerrar();
+
+    // Getters
+    std::string getEquipoId();
+    Severidad getSeveridad();
+    int getDiaOrigen();
 };
 
-
-#endif //PROYECTO1_INCIDENCIA_H
+#endif
