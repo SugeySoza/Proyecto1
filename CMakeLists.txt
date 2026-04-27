@@ -21,4 +21,7 @@ add_executable(Proyecto1 main.cpp
         Servidor.h
         Servidor.cpp
         Algoritmos.cpp
-        Algoritmos.h)
+        Algoritmos.h
+        OperacionInconsistenteException.cpp
+        OperacionInconsistenteException.h
+)
