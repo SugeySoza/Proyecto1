@@ -24,4 +24,6 @@ add_executable(Proyecto1 main.cpp
         Algoritmos.h
         OperacionInconsistenteException.cpp
         OperacionInconsistenteException.h
+        ArchivoInvalidoException.cpp
+        ArchivoInvalidoException.h
 )
